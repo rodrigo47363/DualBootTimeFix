@@ -2,7 +2,7 @@
 
 ## Corregir la hora en un sistema con arranque dual (Windows y Linux)
 
-Este documento proporciona instrucciones detalladas y fáciles de seguir para corregir la hora en un sistema con arranque dual (Windows y Linux). 
+Este documento proporciona instrucciones detalladas y fáciles de seguir para corregir la hora en un sistema con arranque dual (Windows y Linux).
 
 ### ¿Por qué es necesario esto?
 Cuando tienes un sistema con arranque dual, Windows y Linux pueden tener configuraciones diferentes para manejar la hora del sistema, lo que puede causar que la hora se desajuste cada vez que cambias de un sistema operativo a otro. Estas instrucciones te ayudarán a sincronizar ambos sistemas correctamente.
@@ -39,6 +39,15 @@ Cuando tienes un sistema con arranque dual, Windows y Linux pueden tener configu
    - En la ventana que aparece, establece el campo "Información del valor" en `1`.
    - Haz clic en `Aceptar`.
 
+### Paso 5: Deshabilitar el servicio de tiempo de Windows
+
+5. **Ejecutar el siguiente comando en la terminal (como administrador):**
+   - Abre el "Símbolo del sistema" como administrador.
+   - Escribe el siguiente comando:
+     ```powershell
+     sc config w32time start= disabled
+     ```
+
 ### Alternativa usando la línea de comandos
 
 Si prefieres, puedes hacer esto usando la línea de comandos:
@@ -47,7 +56,7 @@ Si prefieres, puedes hacer esto usando la línea de comandos:
    - Presiona las teclas `Win + X` y selecciona `Símbolo del sistema (Administrador)` o `Windows PowerShell (Administrador)`.
 
 2. **Ejecutar el siguiente comando:**
-   ```bash
+   ```powershell
    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
    ```
 
@@ -73,4 +82,4 @@ Por favor, asegúrate de entender completamente lo que estos comandos hacen ante
 ---
 
 ¡Gracias por usar DualBootTimeFix! Esperamos que estas instrucciones te sean de ayuda para mantener la hora correcta en tu sistema con arranque dual.
-```
+
